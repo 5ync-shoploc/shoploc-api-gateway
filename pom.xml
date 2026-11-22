@@ -40,6 +40,15 @@
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
+        <!-- Swagger UI unique (8080) qui agrège le contrat API des services métier.
+             Variante WebFlux (pas -webmvc-) car la Gateway est réactive.
+             Version fixée explicitement : la ligne 3.2.0 vise Spring Boot 4.1.x (la 3.2.1 vise 4.2). -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator-test</artifactId>
