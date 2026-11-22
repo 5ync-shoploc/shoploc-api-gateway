@@ -3,3 +3,11 @@ spring:
     name: shoploc-api-gateway
   config:
     import: optional:configserver:http://localhost:8888
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Mêmes valeurs par défaut que shoploc-identity-service : vérifie la signature
+          # du JWT Keycloak (SCRUM-63), sans config supplémentaire au premier lancement.
+          issuer-uri: ${KEYCLOAK_ISSUER_URL:http://localhost:8180/realms/shoploc}
+          jwk-set-uri: ${KEYCLOAK_URL:http://localhost:8180}/realms/${KEYCLOAK_REALM:shoploc}/protocol/openid-connect/certs
