@@ -25,10 +25,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--        </dependency>-->
+
+        <!-- Vérifie le JWT Keycloak et en tire X-User-Id/X-User-Role pour catalog-service et
+             order-service (qui ne savent pas encore lire un token eux-mêmes). Voir security/. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -38,6 +41,15 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+        <!-- Swagger UI unique (8080) qui agrège le contrat API des services métier.
+             Variante WebFlux (pas -webmvc-) car la Gateway est réactive.
+             Version fixée explicitement : la ligne 3.2.0 vise Spring Boot 4.1.x (la 3.2.1 vise 4.2). -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+            <version>3.2.0</version>
         </dependency>
 
         <dependency>
